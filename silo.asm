@@ -1,7 +1,7 @@
 /*
  * AVRAssembler1.asm
  *
- *  Created: 28/5/2018 10:21:10 ??
+ *  Created: 28/5/2018 10:21:10
  *   Authors: Eleftheria Papaioannou
               George Vafiadis
  */ 
@@ -17,8 +17,8 @@
 .def led0 = r18
 .def leds=r19
 
-
-.CSEG ;code segment of the programme 
+;code segment of the programme 
+.CSEG 
 /* A macro that toggles the current value of the port given as an argument */
 .MACRO OUTI ;P, Rd
 		com @1
@@ -31,13 +31,13 @@ jmp reset
 ;TOV position
 .org 0x100 	
 reset: 
-		LDI	temp, low(RAMEND)
-		OUT	SPL, temp
-		LDI	temp, high(RAMEND)
-		OUT	SPH, temp   
+	LDI	temp, low(RAMEND)
+	OUT	SPL, temp
+	LDI	temp, high(RAMEND)
+	OUT	SPH, temp   
 
-	/*TIMER INITIALIZATIONS*/
-  ;clear the counter
+/*TIMER INITIALIZATIONS*/
+        ;clear the counter
 	clr temp
 	out TCNT1H , temp
 	out TCNT1L , temp
@@ -54,7 +54,7 @@ reset:
 	ldi temp,0x42
 	out OCR1BL,temp
 
-	clr temp; this is for CTC mode
+	clr temp; ;this is for CTC mode
 	out TCCR1A,temp
 	ldi temp,0b0001000; //this binary value is for CTC mode and prescaling 1024 according to the datasheet
 	out TCCR1B,temp
@@ -63,7 +63,7 @@ reset:
 	ldi temp, 1<<OCIE1A
 	out TIMSK,temp
 	
-	ldi temp,0xFF; /*portB is initializes as an output port by writing 0xFF to it
+	ldi temp,0xFF; /*portB is initialized as an output port by writing 0xFF to it
 	out DDRB,temp
 
 
