@@ -1,15 +1,7 @@
-/*
- * AVRAssembler1.asm
- *
- *  Created: 28/5/2018 10:21:10 ??
- *   Authors: Eleftheria Papaioannou
-              George Vafiadis
- */ 
- 
  .include "m16def.inc"
  .device ATMega16
 
-/* Registers Definitions */
+
 .def temp = r16
 .def temp1= r19
 .def temp2= r20
